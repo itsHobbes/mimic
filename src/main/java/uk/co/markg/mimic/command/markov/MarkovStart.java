@@ -58,7 +58,8 @@ public class MarkovStart {
     String lastWord = getLastWord(request.getArgs());
     var markov = MarkovLoader.of(Bigram.class).loadServer(event.getGuild().getIdLong());
     String sentence = buildMessageStart(request.getArgs()) + markov.generate(lastWord);
-    MarkovSender.sendMessage(event, sentence);
+    String zeroWidthSpace = "​";
+    MarkovSender.sendMessage(event, zeroWidthSpace + sentence);
   }
 
   /**
